@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
+<!-- Favicons -->
+<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/owl.carousel.js"></script>
+</head>
+<body id="body">
+<header id="header">
+  <div class="container">
+    <div class="row">
+      <div id="logo" class=" col-md-3 pull-left">
+        <h1><a href="index.html" class="scrollto">RIVI<span>RR</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+      <div class="col-md-6 srch">
+        <div class="row">
+          <input type="text" name="Search" value="" class="form-control col-lg-8" placeholder="keywords....."/>
+          <input type="submit" value="Find Employers" class="btn-search col-md-4"/>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li class="menu-active"><a href="index.html">Home</a></li>
+            <li><a href="twilio.html">About</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+      </div>
+    </div>
+  </div>
+</header>
+<!-- #header -->
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+						<a class="txt1" href="#">
+							Forgot Password?
+						</a>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<div class="text-center p-t-90">
+						<!--<a class="txt1" href="#">
+							Forgot Password?
+						</a>-->
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<footer id="footer">
+  <div class="container">
+    <div class="copyright"> Copyright&copy;<strong>RIVIRR</strong>. All Rights Reserved </div>
+  </div>
+</footer>
+<!-- #footer -->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>	
+<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="lib/sticky/sticky.js"></script> 
+<script src="js/main.js"></script>
+<script>
+
+ var $mobile_nav = $('#nav-menu-container').clone().prop({
+      id: 'mobile-nav'
+    });
+    $mobile_nav.find('> ul').attr({
+      'class': '',
+      'id': ''
+    });
+    $('body').append($mobile_nav);
+    $('body').prepend('<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
+    $('body').append('<div id="mobile-body-overly"></div>');
+    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
+
+    $(document).on('click', '.menu-has-children i', function (e) {
+      $(this).next().toggleClass('menu-item-active');
+      $(this).nextAll('ul').eq(0).slideToggle();
+      $(this).toggleClass("fa-chevron-up fa-chevron-down");
+    });
+
+    $(document).on('click', '#mobile-nav-toggle', function (e) {
+      $('body').toggleClass('mobile-nav-active');
+      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+      $('#mobile-body-overly').toggle();
+    });
+
+    $(document).click(function (e) {
+      var container = $("#mobile-nav, #mobile-nav-toggle");
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+          $('#mobile-body-overly').fadeOut();
+        }
+      }
+    });
+
+</script>
+</body>
+</html>
