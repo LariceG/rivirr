@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/', 'EmployerController@home');
+Route::get('/', 'AdminController@index');
 
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin/login', 'AdminController@login');
@@ -25,78 +25,75 @@ Route::get('/admin/change_password', 'AdminController@change_password');
 Route::post('/admin/update_profile', 'AdminController@update_profile');
 Route::post('/admin/update_password', 'AdminController@update_password');
 
-
-Route::get('/admin/recruits', 'AdminRecruitController@index');
-Route::get('/admin/recruits/add', 'AdminRecruitController@add_recruit');
-Route::get('/admin/recruits/edit/{id}', 'AdminRecruitController@edit_recruit');
-Route::get('/admin/recruits/delete/{id}', 'AdminRecruitController@delete');
-Route::post('/admin/recruits/insert', 'AdminRecruitController@insert');
-Route::post('/admin/recruits/update', 'AdminRecruitController@update');
-
-
-Route::get('/admin/categories', 'AdminCategoryController@index');
-Route::get('/admin/categories/add', 'AdminCategoryController@add_category');
-Route::get('/admin/categories/edit/{id}', 'AdminCategoryController@edit_category');
-Route::get('/admin/categories/delete/{id}', 'AdminCategoryController@delete');
-Route::post('/admin/categories/insert', 'AdminCategoryController@insert');
-Route::post('/admin/categories/update', 'AdminCategoryController@update');
-
-Route::get('/admin/majors', 'AdminMajorController@index');
-Route::get('/admin/majors/add', 'AdminMajorController@add_major');
-Route::get('/admin/majors/edit/{id}', 'AdminMajorController@edit_major');
-Route::get('/admin/majors/delete/{id}', 'AdminMajorController@delete');
-Route::post('/admin/majors/insert', 'AdminMajorController@insert');
-Route::post('/admin/majors/update', 'AdminMajorController@update');
-
-Route::get('/admin/perks', 'AdminPerksController@index');
-Route::get('/admin/perks/add', 'AdminPerksController@add_perk');
-Route::get('/admin/perks/edit/{id}', 'AdminPerksController@edit_perk');
-Route::get('/admin/perks/delete/{id}', 'AdminPerksController@delete');
-Route::post('/admin/perks/insert', 'AdminPerksController@insert');
-Route::post('/admin/perks/update', 'AdminPerksController@update');
-
-Route::get('/admin/employers', 'AdminEmployerController@index');
-Route::get('/admin/employers/add', 'AdminEmployerController@add_employer');
-Route::get('/admin/employers/edit/{id}', 'AdminEmployerController@edit_employer');
-Route::get('/admin/employers/delete/{id}', 'AdminEmployerController@delete');
-Route::post('/admin/employers/insert', 'AdminEmployerController@insert');
-Route::post('/admin/employers/update', 'AdminEmployerController@update');
-Route::get('/admin/employers/gallery_delete/{id}', 'AdminEmployerController@gallery_delete');
-Route::post('/admin/employers/employerActive', 'AdminEmployerController@employerActive');
-
+Route::get('/admin/supervisors', 'AdminSupervisorController@index');
+Route::get('/admin/supervisors/add', 'AdminSupervisorController@add');
+Route::post('/admin/supervisors/insert', 'AdminSupervisorController@insert');
+Route::get('/admin/supervisors/updateStatus/{id}', 'AdminSupervisorController@statusUpdate');
+Route::get('/admin/supervisors/delete/{id}', 'AdminSupervisorController@delete');
+Route::get('/admin/supervisors/edit/{id}', 'AdminSupervisorController@edit');
+Route::get('/admin/supervisors/getChat/{id}', 'AdminSupervisorController@getChat');
+Route::get('/admin/supervisors/updateChatNotification', 'AdminSupervisorController@updateChatNotification');
+Route::post('/admin/supervisors/update', 'AdminSupervisorController@update');
+Route::post('/admin/supervisors/sendMessage', 'AdminSupervisorController@sendMessage');
 
 Route::get('/admin/employees', 'AdminEmployeeController@index');
-Route::get('/admin/employees/add', 'AdminEmployeeController@add_employer');
-Route::get('/admin/employees/edit/{id}', 'AdminEmployeeController@edit_employer');
-Route::get('/admin/employees/delete/{id}', 'AdminEmployeeController@delete');
+Route::get('/admin/employees/add', 'AdminEmployeeController@add');
 Route::post('/admin/employees/insert', 'AdminEmployeeController@insert');
+Route::get('/admin/employees/updateStatus/{id}', 'AdminEmployeeController@statusUpdate');
+Route::get('/admin/employees/delete/{id}', 'AdminEmployeeController@delete');
+Route::get('/admin/employees/edit/{id}', 'AdminEmployeeController@edit');
 Route::post('/admin/employees/update', 'AdminEmployeeController@update');
-Route::get('/admin/employers/home_video/{id}', 'AdminEmployerController@home_video');
-Route::get('/admin/bookings', 'AdminBookingController@index');
-Route::get('/admin/bookings/view/{id}', 'AdminBookingController@view');
-Route::get('/admin/industries', 'AdminIndustriesController@index');
-Route::get('/admin/industries/delete/{id}','AdminIndustriesController@delete');
-Route::get('/admin/inductries/add','AdminIndustriesController@add');
-Route::post('/admin/inductries/insert','AdminIndustriesController@insert');
-Route::get('/admin/inductries/edit_industries/{id}','AdminIndustriesController@edit_industries');
-Route::post('/admin/inductries/update/{id}','AdminIndustriesController@update');
 
-Route::get('/employer', 'EmployerController@index');
-Route::post('/employer/login','EmployerController@login');
-Route::get('/signup', 'EmployerController@signup');
-Route::post('/sign_up', 'EmployerController@sign_up');
-Route::get('/logout', 'EmployerController@logout');
-Route::get('/profile/{id}', 'Employe_profile@profile');
-Route::post('/rating/{id}', 'Employe_profile@rating');
-Route::get('/edit_profile/{id}', 'EmployerController@edit_profile');
-Route::post('/editprofile/{id}', 'EmployerController@editprofile');
-Route::get('/about', 'PagesController@about');
+Route::get('/admin/clients', 'AdminClientController@index');
+Route::get('/admin/clients/add', 'AdminClientController@add');
+Route::post('/admin/clients/insert', 'AdminClientController@insert');
+Route::get('/admin/clients/updateStatus/{id}', 'AdminClientController@statusUpdate');
+Route::get('/admin/clients/delete/{id}', 'AdminClientController@delete');
+Route::get('/admin/clients/edit/{id}', 'AdminClientController@edit');
+Route::post('/admin/clients/update', 'AdminClientController@update');
+Route::get('/admin/clients/getEmployees/{id}', 'AdminClientController@getEmployees');
+Route::get('/admin/client/sites/{id}','AdminClientController@add_sites');
+Route::post('/admin/client/insert_sites/{id}','AdminClientController@insert_sites');
+Route::get('/admin/client/profile/{id}','AdminClientController@profile');
+Route::get('/admin/client/site/delete/{id}','AdminClientController@delete_site');
+Route::get('/admin/client/site/edit','AdminClientController@edit_site');
+Route::post('admin/client/site/update','AdminClientController@update_site');
+Route::get('/admin/client/site/validate','AdminClientController@valiDation');
 
-Route::get('/search', 'SearchController@index');
+Route::get('/admin/sites', 'AdminSiteController@index');
+Route::get('/admin/sites/add', 'AdminSiteController@add');
+Route::post('/admin/sites/insert', 'AdminSiteController@insert');
+Route::get('/admin/sites/delete/{id}', 'AdminSiteController@delete');
+Route::get('/admin/sites/edit/{id}', 'AdminSiteController@edit');
+Route::post('/admin/sites/update', 'AdminSiteController@update');
+Route::get('/admin/client/sites','ClientController@sites');
 
-
-
-
+Route::get('/admin/reports','AdminReportController@index');
+Route::get('/admin/reports/delete/{id}', 'AdminReportController@delete');
+Route::get('/admin/reports/view/{id}', 'AdminReportController@view');
+Route::get('/admin/leaves','AdminLeavesController@leaves');
+Route::get('/change_status/{id}/{status}','AdminLeavesController@change_status');
+Route::get('/admin/positions','AdminController@position');
+Route::get('/positions/delete/{id}','AdminController@delete_position');
+Route::get('/positions/add','AdminController@add_position');
+Route::post('/positions/insert','AdminController@add_insert');
+Route::get('/positions/edit/{id}','AdminController@position_edit');
+Route::post('/positions/update','AdminController@add_update');
+Route::get('/delete/image','AdminSupervisorController@delete_img');
+Route::get('/employee/sites','AdminEmployeeController@manage_sites');
+Route::get('/employee/reports','AdminReportController@index');
+Route::get('/employee/reports/add','AdminEmployeeController@add_report');
+Route::post('/employee/reports/genrate','AdminEmployeeController@genrateReport');
+Route::get('/employee/leaves','AdminLeavesController@leaves');
+Route::get('/employee/leaves/add','AdminEmployeeController@leave_add');
+Route::post('/employee/leaveRequest','AdminEmployeeController@leaveRequest');
+Route::get('/admin/financial_documents','AdminFinancialDocumentController@document');
+Route::get('/admin/financial_documents/add','AdminFinancialDocumentController@add');
+Route::post('/admin/financial_documents/insert','AdminFinancialDocumentController@insert');
+Route::get('/admin/financial_documents/delete/{id}','AdminFinancialDocumentController@delete');
+Route::get('/admin/financial_documents/edit/{id}','AdminFinancialDocumentController@edit');
+Route::post('/admin/financial_documents/update','AdminFinancialDocumentController@update');
+Route::get('/employee/attendance/{id}','AdminSupervisorController@employee_attendance');
 
 
 

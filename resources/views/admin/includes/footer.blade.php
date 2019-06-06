@@ -1,136 +1,233 @@
-   <!--div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Smartzminds. All rights reserved. Template by <a target="_blank" href="https://smartzminds.com">Smartzminds</a>.</p>
-                                </div>
-                            </div>
-                        </div-->
-                    </div>
-                </div>
-            </div>
-            <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
-        </div>
+<!-- Footer -->
+<footer class="footer container-fluid pl-30 pr-30">
+				<!---div class="row">
+					<div class="col-sm-12">
+						<p>2019 &copy; Security App. Parpered by Smartzminds</p>
+					</div>
+				</div-->
+			</footer>
+			<!-- /Footer -->
+			
+		</div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /#wrapper -->
 	
-    <!-- Bootstrap JS-->
-    <script src="{{ URL::asset('assets/vendor/bootstrap-4.1/popper.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
-    <!-- Vendor JS       -->
-    <script src="{{ URL::asset('assets/vendor/slick/slick.min.js') }}">
-    </script>
-    <script src="{{ URL::asset('assets/vendor/wow/wow.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/animsition/animsition.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
-    </script>
-    <script src="{{ URL::asset('assets/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/counter-up/jquery.counterup.min.js') }}">
-    </script>
-    <script src="{{ URL::asset('assets/vendor/circle-progress/circle-progress.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/chartjs/Chart.bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/select2/select2.min.js') }}"></script>
-       <!-- Main JS-->
-    <script src="{{ URL::asset('assets/js/main.js') }}"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<!--AIzaSyCGu_V6bEIUGZcvd9lNDAoAMly5xziV0wc-->
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDv32LWNs2vKC4iwLMXBfJgy3J3xuZcRF0&libraries=places"></script>
-	              <script>
-			  $(document).ready( function () {                       
-					$('#myTable').DataTable();
-				} );
-				$(document).ready(function () {
-    //@naresh action dynamic childs
-    var next = 0;
-    $("#add-more").click(function(e){
-        e.preventDefault();
-        var addto = "#field" + next;
-        var addRemove = "#field" + (next);
-        next = next + 1;
-        var newIn = '<div id="field'+ next +'" name="field'+ next +'"><div class="form-group" id="location"><input type="text" name="location[]" placeholder="Enter Location" class="form-control autocomplete"> </div>';
-        var newInput = $(newIn);
-        var removeBtn = '<br><button style="margin-bottom: 5px;" id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >Remove</button></div></div><div id="field">';
-        var removeButton = $(removeBtn);
-        $(addto).after(newInput);
-        $(addRemove).after(removeButton);
-        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-        $("#count").val(next);  
-        
-		$('.remove-me').click(function(e){
-			e.preventDefault();
-			var fieldNum = this.id.charAt(this.id.length-1);
-			var fieldID = "#field" + fieldNum;
-			$(this).remove(); 
-			$(fieldID).remove();
+	<!-- JavaScript -->
+	
+    <!-- jQuery -->
+    <script src="{{ URL::asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ URL::asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+	<script src="{{ URL::asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
+		
+	<!-- Form Flie Upload Data JavaScript -->
+	<script src="{{ URL::asset('dist/js/form-file-upload-data.js') }}"></script>
+
+	<script src="{{ URL::asset('dist/js/custom.js') }}"></script>
+
+	<script src="{{ URL::asset('vendors/bower_components/switchery/dist/switchery.min.js') }}"></script>
+	<!-- Select2 JavaScript -->
+	<script src="{{ URL::asset('vendors/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+		
+		<!-- Bootstrap Select JavaScript -->
+		<script src="{{ URL::asset('vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+		
+		<!-- Bootstrap Tagsinput JavaScript -->
+		<script src="{{ URL::asset('vendors/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+		
+		<!-- Bootstrap Touchspin JavaScript -->
+		<script src="{{ URL::asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
+		
+		<!-- Multiselect JavaScript -->
+		<script src="{{ URL::asset('vendors/bower_components/multiselect/js/jquery.multi-select.js') }}"></script>
+    <script src="{{ URL::asset('vendors/bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js') }}"></script>
+
+	<script src="{{ URL::asset('dist/js/form-advance-data.js') }}"></script>
+
+
+	<script src="{{ URL::asset('vendors/bower_components/bootstrap-validator/dist/validator.min.js') }}"></script>
+
+	<!-- Data table JavaScript -->
+	<script src="{{ URL::asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ URL::asset('dist/js/dataTables-data.js') }}"></script>
+	<script src="{{ URL::asset('vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+	<script src="{{ URL::asset('vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+	<script src="{{ URL::asset('vendors/bower_components/jszip/dist/jszip.min.js') }}"></script>
+	<script src="{{ URL::asset('vendors/bower_components/pdfmake/build/pdfmake.min.js') }}"></script>
+	<script src="{{ URL::asset('vendors/bower_components/pdfmake/build/vfs_fonts.js') }}"></script>
+	
+	<script src="{{ URL::asset('vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+	<script src="{{ URL::asset('vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+	<script src="{{ URL::asset('dist/js/export-table-data.js') }}"></script>
+
+	<script src="{{ URL::asset('vendors/bower_components/sweetalert/dist/sweetalert.min.js') }}"></script>
+		
+		<script src="{{ URL::asset('dist/js/sweetalert-data.js') }}"></script>
+
+	
+	<!-- Slimscroll JavaScript -->
+	<script src="{{ URL::asset('dist/js/jquery.slimscroll.js') }}"></script>
+	
+	<!-- simpleWeather JavaScript -->
+	<script src="{{ URL::asset('vendors/bower_components/moment/min/moment.min.js') }}"></script>
+	<script src="{{ URL::asset('vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js') }}"></script>
+	<script src="{{ URL::asset('dist/js/simpleweather-data.js') }}"></script>
+	
+	<!-- Progressbar Animation JavaScript -->
+	<script src="{{ URL::asset('vendors/bower_components/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+	<script src="{{ URL::asset('vendors/bower_components/jquery.counterup/jquery.counterup.min.js') }}"></script>
+	
+	<!-- Fancy Dropdown JS -->
+	<script src="{{ URL::asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
+	
+	<!-- Sparkline JavaScript -->
+	<script src="{{ URL::asset('vendors/jquery.sparkline/dist/jquery.sparkline.min.js') }}"></script>
+	
+	<!-- Owl JavaScript -->
+	<script src="{{ URL::asset('vendors/bower_components/owl.carousel/dist/owl.carousel.min.js') }}"></script>
+	
+	<!-- Toast JavaScript -->
+	<script src="{{ URL::asset('vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js') }}"></script>
+	
+	<!-- EChartJS JavaScript -->
+	<script src="{{ URL::asset('vendors/bower_components/echarts/dist/echarts-en.min.js') }}"></script>
+	<script src="{{ URL::asset('vendors/echarts-liquidfill.min.js') }}"></script>
+	
+	<!-- Switchery JavaScript -->
+	<script src="{{ URL::asset('vendors/bower_components/switchery/dist/switchery.min.js') }}"></script>
+	
+	<!-- Init JavaScript -->
+	<script src="{{ URL::asset('dist/js/init.js') }}"></script>
+	<script src="{{ URL::asset('dist/js/dashboard5-data.js') }}"></script>
+    
+	
+	<script>
+     
+	function modelShow(siteId)
+	{
+	 
+		$.ajax({
+		'type':'GET',
+	  'url':'{{url("/admin/client/site/edit")}}',	 
+	  data:{id:siteId},
+		success:function(result)
+	 {
+	 
+		 $('#myModal').modal('show');
+     $('#myModal').html(result);
+	  
+	 }
+
+
+
+	  });
+
+
+	}
+	</script>
+	<script>
+	function validation()
+	{
+		 var employeeId = $('#employeeID').val();
+		 var shift = $('#shift').val();
+		$.ajax({
+			 type:"GET",
+			 url:"{{url('/admin/client/site/validate')}}",
+			 data:{employeeId:employeeId,shift:shift},	
+    	success:function(result)
+			{
+				//alert(result);
+				$('#employeeError').remove();
+				$('#error').append("<span id='employeeError' style='color: red;'>"+result+"</span>");
+				if(result)
+				{
+					$('#site_name').attr('disabled','disabled');
+				  $('#site_location').attr('disabled','disabled');
+				}
+				 else
+				 {
+					$('#site_name').removeAttr('disabled','disabled');
+				  $('#site_location').removeAttr('disabled','disabled');
+					$('#bttn').click(function(){
+					$("form").submit();  
+					
+				});
+				 }
+			}
+ 
+		 });	
+     
+
+	}
+	</script>
+		<script>
+	function modalValidation()
+	{
+		 var employeeId = $('#employee_id').val();
+		 var shift = $('#Shift').val();
+    
+		$.ajax({
+			 type:"GET",
+			 url:"{{url('/admin/client/site/validate')}}",
+			 data:{employeeId:employeeId,shift:shift},	
+    	success:function(result)
+			{
+			
+				$('#employee_Error').remove();
+				$('#modalError').append("<span id='employee_Error' style='color: red;'>"+result+"</span>");
+				if(result)
+				{
+					$('#update').attr('disabled','disabled');
+				  //$('#site_location_modal').attr('disabled','disabled');
+				}
+				 else
+				 {
+					$('#update').removeAttr('disabled','disabled');
+				  //$('#site_location_modal').removeAttr('disabled','disabled');
+					$('#update').click(function(){
+					$("form").submit();  
+					
+				});
+				 }
+			}
+ 
+		 });	
+ 
+
+	}
+	</script>
+	<script>
+	 $('#subMit').click(function(){
+
+   alert("ok");
+	 });
+	</script>
+	 <script>
+	 function deleteImg(Id)
+	 {
+		 alert();
+	 }
+	
+	</script>
+	<script>
+	function imgDelete(Id,Table)
+	{
+	
+		$.ajax({
+     type:"GET",
+		 url:"{{ url('/delete/image')}}",
+		 data:{id:Id,table:Table},
+		 success:function(result){
+			window.location.reload();
+		 }
+
 		});
-        initialize();
-        var acInputs = document.getElementsByClassName("autocomplete");
+	}
+	</script>
+	</body>
 
-for (var i = 0; i < acInputs.length; i++) {
-   //alert(acInputs[i]);
-    var autocomplete = new google.maps.places.Autocomplete(acInputs[i]);
-    autocomplete.inputId = acInputs[i].id;
-
-    google.maps.event.addListener(autocomplete, 'place_changed', function () {
-        //document.getElementById("log").innerHTML = 'You used input with id ' + this.inputId;
-    });
-}
-    });
-
-});
-$(".autocomplete").keypress(function(){
-
-    var acInputs = document.getElementsByClassName("autocomplete");
-
-    for (var i = 0; i < acInputs.length; i++) {
-       //alert(acInputs[i]);
-        var autocomplete = new google.maps.places.Autocomplete(acInputs[i]);
-        autocomplete.inputId = acInputs[i].id;
-
-        google.maps.event.addListener(autocomplete, 'place_changed', function () {
-            //document.getElementById("log").innerHTML = 'You used input with id ' + this.inputId;
-            var latitude = autocomplete.getPlace().geometry.location.lat();
-            var longitude = autocomplete.getPlace().geometry.location.lng();
-            document.getElementById('latitude').value = latitude;
-            document.getElementById('longitude').value = longitude;
-        });
-    }
-});
-//initialize();
-
-
-
-			  </script>
-<!------headquater-------->
-<script>
-
-function initialize() {
-
-    var acInputs = document.getElementsByClassName("autoheadquater");
-
-    for (var i = 0; i < acInputs.length; i++) {
-       //alert(acInputs[i]);
-        var autocomplete = new google.maps.places.Autocomplete(acInputs[i]);
-        autocomplete.inputId = acInputs[i].id;
-
-        google.maps.event.addListener(autocomplete, 'place_changed', function () {
-            //document.getElementById("log").innerHTML = 'You used input with id ' + this.inputId;
-        });
-    }
-}
-
-
-
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-</div>
+</html>

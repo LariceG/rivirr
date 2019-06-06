@@ -1,129 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
-    <link rel="shortcut icon" href="{{ url('/public/assets/frontend/images/logo.png')}}" type="image/x-icon">
-    <!-- Title Page-->
-    <title>Login</title>
-
-    <!-- Fontfaces CSS-->
-    <link href="{{ URL::asset('assets/css/font-face.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
-
-    <!-- Bootstrap CSS-->
-    <link href="{{ URL::asset('assets/vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
-
-    <!-- Vendor CSS-->
-    <link href="{{ URL::asset('assets/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/wow/animate.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/slick/slick.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ URL::asset('assets/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="{{ URL::asset('assets/css/theme.css') }}" rel="stylesheet" media="all">
-  <style>
-  .login-logo span{
-	color: #50d8af;
-}
-.login-logo h1{
-	color: #0c2e8a;
-}
-  </style>
-</head>
-
-<body class="animsition">
-    <div class="page-wrapper">
-        <div class="page-content--bge5">
-            <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
-                        <div class="login-logo">
-                          <img src="{{ url('/public/assets/images/icon/logo2.png')}}">
-                        </div>
-						@if (Session::get('error'))
-						<div class="alert alert-danger text-center">
-						{{ Session::get('error') }}
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Secuity App | Admin Panel</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+	
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		
+		<!-- vector map CSS -->
+		<link href="{{ URL::asset('vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+		
+		
+		
+		<!-- Custom CSS -->
+		<link href="{{ URL::asset('dist/css/style.css') }}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<!--Preloader-->
+		<div class="preloader-it">
+			<div class="la-anim-1"></div>
+		</div>
+		<!--/Preloader-->
+		
+		<div class="wrapper box-layout pa-0">
+			<header class="sp-header">
+				<div class="sp-logo-wrap pull-left">
+					<a href="index.html">
+						<img class="brand-img mr-10" src="{{ URL::asset('img/logo.png') }}" alt="brand"/>
+						<span class="brand-text">Security App</span>
+					</a>
+				</div>
+				<!--div class="form-group mb-0 pull-right">
+					<span class="inline-block pr-10">Don't have an account?</span>
+					<a class="inline-block btn btn-success  btn-rounded btn-outline" href="signup.html">Sign Up</a>
+				</div-->
+				<div class="clearfix"></div>
+			</header>
+			
+			<!-- Main Content -->
+			<div class="page-wrapper pa-0 ma-0 auth-page">
+				<div class="container-fluid">
+					<!-- Row -->
+					<div class="table-struct full-width full-height">
+						<div class="table-cell vertical-align-middle auth-form-wrap">
+							<div class="auth-form  ml-auto mr-auto no-float">
+								<div class="row">
+									<div class="col-sm-12 col-xs-12">
+										<div class="mb-30">
+											<h3 class="text-center txt-dark mb-10">Sign in to Admin Panel</h3>
+											<h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
+										</div>
+										@if (Session::get('error'))
+										<div class="alert alert-danger text-center">
+										{{ Session::get('error') }}
+										</div>
+										@endif
+										<div class="form-wrap">
+											<form action="{{ url('/admin/login') }}" method="post">
+												<div class="form-group">
+													<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
+													<input type="text" name="email" class="form-control" value="{{ old('email') }}" id="exampleInputEmail_2" placeholder="Enter Email">
+													@if ($errors->first('email'))
+												<label class="error">
+												{{ $errors->first('email') }}
+												</label>
+												@endif
+												</div>
+												
+												<div class="form-group">
+													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>
+													<a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="javascript:void(0)">forgot password ?</a>
+													<div class="clearfix"></div>
+													<input type="password" name="password" value="{{ old('password') }}" class="form-control" id="exampleInputpwd_2" placeholder="Enter Password">
+													
+													<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+													@if ($errors->first('password'))
+												<label class="error">
+												{{ $errors->first('password') }}
+												</label>
+												@endif
+												</div>
+												
+												<!-- class="form-group">
+													<div class="checkbox checkbox-primary pr-10 pull-left">
+														<input id="checkbox_2" required="" type="checkbox">
+														<label for="checkbox_2"> Keep me logged in</label>
+													</div>
+													<div class="clearfix"></div>
+												</div-->
+												<div class="form-group text-center">
+													<button type="submit" class="btn btn-success  btn-rounded">sign in</button>
+												</div>
+											</form>
+										</div>
+									</div>	
+								</div>
+							</div>
 						</div>
-						@endif
-						
-                        <div class="login-form">
-                            <form action="{{ url('/admin/login') }}" method="post">
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="text" value="{{ old('email') }}"  name="email" placeholder="Email">
-                                </div>
-								@if ($errors->first('email'))
-								<label class="error">
-							    {{ $errors->first('email') }}
-							    </label>
-								@endif
-								<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-								
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" value="{{ old('password') }}" name="password" placeholder="Password">
-                                </div>
-								@if ($errors->first('password'))
-								<label class="error">
-							    {{ $errors->first('password') }}
-							    </label>
-								@endif
-                                <!--<div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">Remember Me
-                                    </label>
-                                    <label>
-                                        <a href="#">Forgotten Password?</a>
-                                    </label>
-                                </div>-->
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                              
-                            </form>
-                          
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Jquery JS-->
-    <script src="{{ URL::asset('assets/vendor/jquery-3.2.1.min.js') }}"></script>
-    <!-- Bootstrap JS-->
-    <script src="{{ URL::asset('assets/vendor/bootstrap-4.1/popper.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
-    <!-- Vendor JS       -->
-    <script src="{{ URL::asset('assets/vendor/slick/slick.min.js') }}">
-    </script>
-    <script src="{{ URL::asset('assets/vendor/wow/wow.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/animsition/animsition.min.js') }}"></script>
-    <script src="{{ URL::asset('vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
-    </script>
-    <script src="{{ URL::asset('assets/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/counter-up/jquery.counterup.min.js') }}">
-    </script>
-    <script src="{{ URL::asset('assets/vendor/circle-progress/circle-progress.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/chartjs/Chart.bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/select2/select2.min.js') }}">
-    </script>
-
-    <!-- Main JS-->
-    <script src="{{ URL::asset('assets/js/main.js') }}"></script>
-
-</body>
-
+					</div>
+					<!-- /Row -->	
+				</div>
+				
+			</div>
+			<!-- /Main Content -->
+		
+		</div>
+		<!-- /#wrapper -->
+		
+		<!-- JavaScript -->
+		
+		<!-- jQuery -->
+		<script src="{{ URL::asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
+		
+		<!-- Bootstrap Core JavaScript -->
+		<script src="{{ URL::asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+		<script src="{{ URL::asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+		
+		<!-- Slimscroll JavaScript -->
+		<script src="{{ URL::asset('dist/js/jquery.slimscroll.js') }}"></script>
+		
+		<!-- Init JavaScript -->
+		<script src="{{ URL::asset('dist/js/init.js') }}"></script>
+	</body>
 </html>
-<!-- end document-->

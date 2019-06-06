@@ -8,36 +8,100 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use App\Admin;
+use App\Site;
+use App\User;
 use Session;
 class ClientController extends Controller
 {
-    public function car_details($ticket)
-    {
-		return view('client/car_details',['ticket'=>$ticket]);
-    }
-	public function ticket_response($ticket)
-    {
-		return view('client/ticket_response',['ticket'=>$ticket]);
-    }
-	public function request_detail($ticket)
-    {
-		$ticket_details = DB::table('tickets')->where(['ticketno' => $ticket])->leftJoin('valets', 'valets.id', '=', 'tickets.valet_id')->select('tickets.*', 'valets.name', 'valets.image')->first();
-		return view('client/request_detail',['ticket_details'=>$ticket_details]);
-    }
-	public function send_request($ticket)
-    {
-		$update = DB::table('tickets')->where('ticketno', $ticket)->update(['status' => '2']);
-		Session::flash('success', 'Request Send successfully Link: http://localhost/valet_parking/public/valet/request_response/'.$ticket);		
-		return redirect('/client/request_detail/'.$ticket);
-    }
-	public function update_car_details(Request $request)
+	public function __construct()
 	{
-		$this->validate($request,[
-         'first_name'=>'required',
-         'brand'=>'required',
-         'color'=>'required'
-		]);
-		$update = DB::table('tickets')->where('ticketno', $request->ticketno)->update(['first_name' => $request->first_name,'brand' => $request->brand,'color' => $request->color,'year' => $request->year,'model' => $request->model]);		
-		return redirect('/client/ticket_response/'.$request->ticketno);		 		
+     $this->middleware('Loger',[
+		'only'=>['sites']]);
+		
+	}	 
+	
+	public function sites()
+	 {
+			$data['admin'] = User::where(['id' => Session::get('admin_id')])->first();
+			 $sites = Site::where(['client_id' => Session::get('admin_id')])->get();
+			 foreach($sites as $site)
+			 {
+					 $site['supervisor_name'] = User::where(['id' => $site['supervisor_id']])->value('name');
+					 $site['employee_name'] = User::where(['id' => $site['employee_id']])->value('name');
+					 $data['sites'][] = $site;
+			 }
+		  $data['active'] = 'clients';
+		  $data['title'] = 'Sites';
+			return view('admin/client_admin/manage',$data);
+
+	 }	
+	
+	
+	/*public function index()
+    {		
+		if(!Session::get('admin_id'))
+		{
+			return redirect('/admin');exit;
+		}
+		$data['admin'] = User::where(['id' => Session::get('admin_id')])->first();
+		$data['datas'] = Site::orderBy('id', 'desc')->get();	
+		$data['active'] = 'sites';
+		$data['title'] = 'Manage Sites';
+		return view('admin/sites/manage',$data);
+    }
+	public function add()
+    {		
+		if(!Session::get('admin_id'))
+		{
+			return redirect('/admin');exit;
+		}
+		$data['admin'] = User::where(['id' => Session::get('admin_id')])->first();
+		$data['active'] = 'sites';
+		$data['title'] = 'Add Site';
+		return view('admin/sites/add',$data);
+    }
+	public function edit($id)
+    {		
+		if(!Session::get('admin_id'))
+		{
+			return redirect('/admin');exit;
+		}
+		$data['admin'] = User::where(['id' => Session::get('admin_id')])->first();
+		$data['data'] = Site::where(['id' => $id])->first();
+		$data['active'] = 'sites';
+		$data['title'] = 'Edit Site';
+		return view('admin/sites/edit',$data);
+    }
+	public function insert(Request $request)
+	{
+		if(!Session::get('admin_id'))
+		{
+			return redirect('/admin');exit;
+		}
+		$insert = Site::insert(['site_name' => $request->site_name,'site_location' => $request->site_location, 'created_at'=>date('Y-m-d h:i:s')]);	
+		Session::flash('success', 'Site Added Successfully'); 		
+		return redirect('/admin/sites');
 	}
+	public function update(Request $request)
+	{
+		if(!Session::get('admin_id'))
+		{
+			return redirect('/admin');exit;
+		}
+		$inputs['site_name'] = $request->site_name;
+		$inputs['site_location'] = $request->site_location;
+		$update = Site::where('id', $request->id)->update($inputs);	
+		Session::flash('success', 'Site updated Successfully'); 		
+		return redirect('/admin/sites');
+	}
+	public function delete($id)
+  {		
+		if(!Session::get('admin_id'))
+		{
+			return redirect('/admin');exit;
+		}
+		$delete = Site::where('id', $id)->delete();
+		Session::flash('success', 'Site deleted Successfully'); 		
+		return redirect('/admin/sites');
+	}*/
 }
